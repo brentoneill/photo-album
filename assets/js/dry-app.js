@@ -1,5 +1,8 @@
 $(document).ready(function() {
   //execute javascript on DOM load
+
+
+
       /////////////////////////////////////////////////
       /////////////////////////////////////////////////
       //set nav menu names//
@@ -20,15 +23,6 @@ $(document).ready(function() {
       // };
       /////////////////////////////////////////////////
       /////////////////////////////////////////////////
-
-/////////////////////////////////////////////////
-////  Set background image of home screen   /////
-
-
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-
 
 
 
@@ -56,10 +50,8 @@ $(document).ready(function() {
 
     //change bg to random image from gallery
     var rand = Math.floor((Math.random()*5)+1);
-    console.log(rand);
     bgImage = $(relatedClass).find('img').eq(rand).attr('src');
-    $('<style>body:before{background: url("'+bgImage+'");}</style>').appendTo('head');
-    console.log(document.styleSheets[0]);
+    $('<style>body:before{background-image: url("'+bgImage+'");}</style>').appendTo('head');
   });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -68,9 +60,12 @@ $(document).ready(function() {
 
 
 /////////////////////////////////////////////////
-////Change album when clicking sidebar nav
+////Change album when clicking sidebar nav  /////
   $('nav a').click(function (event) {
     event.preventDefault();
+
+    //remove background-image
+    $('head style').first().remove();
 
     var relatedClass = "." + $(this).attr('rel'); //sets the class based on a clicked
     //if the home button is clicked, hide nav and album views
@@ -78,7 +73,12 @@ $(document).ready(function() {
       $('nav').addClass('hidden');
       $('nav').removeClass('active');
       $('.album-expanded').removeClass('active');
-      $('head style').first().remove();
+    }
+    else {
+      //change bg image to random blurred image -- only do so when home link is not clicked
+      var rand = Math.floor((Math.random()*5)+1);
+      bgImage = $(relatedClass).find('img').eq(rand).attr('src');
+      $('<style>body:before{background-image: url("'+bgImage+'");}</style>').appendTo('head');
     };
     $(relatedClass).siblings().addClass('hidden');
     $(relatedClass).removeClass('hidden');
@@ -88,6 +88,7 @@ $(document).ready(function() {
     //set the album name to the text found in h1 tag inside the link
     var aName = $('a[rel="'+aNameSelect+'"]').find('h1').text();
     $('.album-expanded-name h2').text(aName);
+
   });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -120,7 +121,7 @@ $(document).ready(function() {
 
 
 /////////////////////////////////////////////////
-////Set back button to close photo-expanded view;
+////Set back button to close photo-expanded view/
   $('.back-button a').click(function (event) {
     event.preventDefault();
     $('.photo-expanded').removeClass('active');
@@ -137,16 +138,29 @@ $(document).ready(function() {
   $('a.next-photo').click(function (event) {
     event.preventDefault();
 
-
-    //change img src to the next photo in the gallery
+    //change img src to the next photo in the gallery//
     var curImageSrc = $('.photo-large img').attr('src');
+    //Find the first img w/ same source as clicked and
+    //traverse up the DOM to find the highest level
+    //parent of the image found
     var curImgParentDiv = $('img[src="'+curImageSrc+'"]').parent().parent().eq(0);
-    console.log(curImgParentDiv);
     var curImgParentA = curImgParentDiv.parent();
-    console.log(curImgParentA);
+    //Traverse to the sibling of the next sibling of the parent anchor tag
     var newImgSrc = curImgParentA.next('a').find('img').attr('src');
-    console.log(newImgSrc);
-    $('.photo-large img').attr('src', newImgSrc);
+    //get text for caption
+    var caption = curImgParentA.next('a').find('p').text();
+
+    if($(curImgParentA).is(':last-child'))
+    {
+      alert('this is the last image in the album');
+      //maybe set to loop back to start...
+    }
+    else {
+      //change photo
+      $('.photo-large img').attr('src', newImgSrc);
+      //change photo caption
+      $('.photo-large h2').text(caption);
+    }
   });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -155,18 +169,32 @@ $(document).ready(function() {
 
 
 /////////////////////////////////////////////////
-////    previous photo button    ////////////////
+////    Previous photo button    ////////////////
   $('a.last-photo').click(function (event) {
     event.preventDefault();
 
-
-    //change im src to the last photo in the gallery
+    //change im src to the previous photo in the gallery
     var curImageSrc = $('.photo-large img').attr('src');
+    //Find the first img w/ same source as clicked and
+    //traverse up the DOM to find the highest level
+    //parent of the image with that src value
     var curImgParentDiv = $('img[src="'+curImageSrc+'"]').parent().parent().eq(0);
     var curImgParentA = curImgParentDiv.parent();
+    //Traverse to the next sibiling of the parent anchor tag
     var newImgSrc = curImgParentA.prev('a').find('img').attr('src');
-    console.log(newImgSrc);
-    $('.photo-large img').attr('src', newImgSrc);
+    //get text for caption
+    var caption = curImgParentA.prev('a').find('p').text();
+    if($(curImgParentA).is(':first-child'))
+    {
+      alert('this is the first image in the album');
+      //maybe set to loop to the end of the album...
+    }
+    else {
+      //change photo caption
+      $('.photo-large h2').text(caption);
+      //chang photo
+      $('.photo-large img').attr('src', newImgSrc);
+    }
   });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////

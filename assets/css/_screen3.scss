@@ -62,6 +62,9 @@
         color: $green;
         border-color: $green;
       }
+      &:active {
+        color: light($green, 20%);
+      }
     }
     a:first-child {
       margin-right:10px;
