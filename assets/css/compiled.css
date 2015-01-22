@@ -43,7 +43,7 @@ nav {
   overflow-y: hidden; }
 
 html {
-  overflow: hidden; }
+  overflow-y: hidden; }
 
 body {
   position: fixed;
