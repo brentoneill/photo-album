@@ -15,7 +15,9 @@ ul, ol {
 
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0; }
 
 a {
   text-decoration: none; }
@@ -39,6 +41,41 @@ p {
 
 nav {
   overflow-y: hidden; }
+
+body {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  height: 100%; }
+
+body:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(15px);
+  filter: blur(15px); }
+
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  background-image: url("http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_527bf56961712_1.JPG");
+  width: 1200px;
+  height: 800px;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px); }
 
 .header {
   margin-bottom: 40px;
@@ -66,6 +103,7 @@ nav {
       .albums-container .album-row a:hover > div.album {
         transform: translateY(-20px); }
       .albums-container .album-row a div.album {
+        background-color: #FFFFFF;
         transition: all .5s ease;
         box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.4); }
     .albums-container .album-row a:last-child {
@@ -93,10 +131,12 @@ nav {
     margin-left: 100px;
     margin-right: 100px;
     padding-bottom: 10px;
-    border-bottom: thin solid #000;
-    margin-bottom: 100px; }
+    border-bottom: 2px solid #FFFFFF;
+    margin-bottom: 100px;
+    color: #FFFFFF; }
     .album-expanded .album-expanded-name h2 {
-      font-size: 40px; }
+      font-size: 40px;
+      text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6); }
   .album-expanded .photo-row {
     width: 100%;
     margin-bottom: 60px;
@@ -108,6 +148,7 @@ nav {
     .album-expanded a:hover > div.photo {
       transform: translateY(-20px); }
     .album-expanded a div.photo {
+      background-color: #FFFFFF;
       transition: all .5s ease;
       box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.4); }
   .album-expanded a:last-child {
@@ -118,6 +159,9 @@ nav {
     padding: 10px;
     border: thin solid #000;
     box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.4); }
+    .album-expanded .photo .photo-image img {
+      width: 200px;
+      height: 200px; }
 
 nav {
   position: absolute;
@@ -147,7 +191,7 @@ nav {
       border-color: red; }
 
 .photo-expanded {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
   position: absolute;
   left: 0;
   top: 0;
@@ -156,8 +200,9 @@ nav {
   .photo-expanded .photo-large {
     text-align: center;
     width: 80%;
+    min-height: 500px;
     margin: 0 auto;
-    padding-top: 200px;
+    padding-top: 100px;
     margin-bottom: 40px; }
     .photo-expanded .photo-large img {
       border: thin solid #FFFFFF;
@@ -168,7 +213,7 @@ nav {
       margin-bottom: 20px; }
   .photo-expanded .back-button {
     position: absolute;
-    top: 20px;
+    top: 40px;
     left: 20px; }
     .photo-expanded .back-button a {
       border: thin solid #FFFFFF;

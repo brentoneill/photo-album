@@ -1,26 +1,39 @@
 $(document).ready(function() {
   //execute javascript on DOM load
+      /////////////////////////////////////////////////
+      /////////////////////////////////////////////////
+      //set nav menu names//
+      // //Set parameters for loop
+      // var navLength = $('nav ul').children().length - 1;
+      // var numRows = $('.albums-container .album-row').size();
+      //
+      // //Loop through values to set names
+      // for(var i = 0; i < navLength; i++) {
+      //   var aName = "";
+      //   if (i >= 3) {
+      //     aName =  $('.album-row').eq(1).('a').eq(i-3).find('h1').text();
+      //   }
+      //   else {
+      //     aName = $('.album-row a').eq(i).find('h1').text();
+      //   }
+      //   $('nav ul li a').eq(i).text(aName);
+      // };
+      /////////////////////////////////////////////////
+      /////////////////////////////////////////////////
 
-  //set nav menu names//
-
-  // //Set parameters for loop
-  // var navLength = $('nav ul').children().length - 1;
-  // var numRows = $('.albums-container .album-row').size();
-  //
-  // //Loop through values to set names
-  // for(var i = 0; i < navLength; i++) {
-  //   var aName = "";
-  //   if (i >= 3) {
-  //     aName =  $('.album-row').eq(1).('a').eq(i-3).find('h1').text();
-  //   }
-  //   else {
-  //     aName = $('.album-row a').eq(i).find('h1').text();
-  //   }
-  //   $('nav ul li a').eq(i).text(aName);
-  // };
+/////////////////////////////////////////////////
+////  Set background image of home screen   /////
 
 
-  //Switch to expanded album view when clicking on home screen images
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////
+////    Switch to expanded album view when clicking on home screen images
   $('.album-row a').click(function (event) {
     event.preventDefault();
 
@@ -40,20 +53,32 @@ $(document).ready(function() {
     //change album name
     var aName = $(this).find('h1').text();
     $('.album-expanded-name h2').text(aName);
-    //Set album name for nav bar
-  });
 
-  //Change album when clicking sidebar nav
+    //change bg to random image from gallery
+    var rand = Math.floor((Math.random()*5)+1);
+    console.log(rand);
+    bgImage = $(relatedClass).find('img').eq(rand).attr('src');
+    $('<style>body:before{background: url("'+bgImage+'");}</style>').appendTo('head');
+    console.log(document.styleSheets[0]);
+  });
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////
+////Change album when clicking sidebar nav
   $('nav a').click(function (event) {
     event.preventDefault();
 
     var relatedClass = "." + $(this).attr('rel'); //sets the class based on a clicked
-    console.log(relatedClass)
     //if the home button is clicked, hide nav and album views
     if(relatedClass === ".albums-container") {
       $('nav').addClass('hidden');
       $('nav').removeClass('active');
       $('.album-expanded').removeClass('active');
+      $('head style').first().remove();
     };
     $(relatedClass).siblings().addClass('hidden');
     $(relatedClass).removeClass('hidden');
@@ -64,8 +89,14 @@ $(document).ready(function() {
     var aName = $('a[rel="'+aNameSelect+'"]').find('h1').text();
     $('.album-expanded-name h2').text(aName);
   });
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 
-  //Enlarge Picture on click
+
+
+
+/////////////////////////////////////////////////
+////    Enlarge Picture on click    /////////////
   $('.photo-row a').click(function (event) {
     event.preventDefault();
 
@@ -82,25 +113,63 @@ $(document).ready(function() {
     //change photo caption
     $('.photo-large h2').text(caption);
   });
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 
-  //Set back button to close photo-expanded view;
+
+
+
+/////////////////////////////////////////////////
+////Set back button to close photo-expanded view;
   $('.back-button a').click(function (event) {
     event.preventDefault();
     $('.photo-expanded').removeClass('active');
     $('.photo-expanded').addClass('hidden');
   });
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 
-  //Next photo button
+
+
+
+/////////////////////////////////////////////////
+////    Next photo button    ////////////////////
   $('a.next-photo').click(function (event) {
     event.preventDefault();
-    //change img src to the next photo in the gallery
 
+
+    //change img src to the next photo in the gallery
+    var curImageSrc = $('.photo-large img').attr('src');
+    var curImgParentDiv = $('img[src="'+curImageSrc+'"]').parent().parent().eq(0);
+    console.log(curImgParentDiv);
+    var curImgParentA = curImgParentDiv.parent();
+    console.log(curImgParentA);
+    var newImgSrc = curImgParentA.next('a').find('img').attr('src');
+    console.log(newImgSrc);
+    $('.photo-large img').attr('src', newImgSrc);
   });
-  
-  //previous photo button
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////
+////    previous photo button    ////////////////
   $('a.last-photo').click(function (event) {
     event.preventDefault();
-    //change im src to the last photo in the gallery
 
+
+    //change im src to the last photo in the gallery
+    var curImageSrc = $('.photo-large img').attr('src');
+    var curImgParentDiv = $('img[src="'+curImageSrc+'"]').parent().parent().eq(0);
+    var curImgParentA = curImgParentDiv.parent();
+    var newImgSrc = curImgParentA.prev('a').find('img').attr('src');
+    console.log(newImgSrc);
+    $('.photo-large img').attr('src', newImgSrc);
   });
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
 });

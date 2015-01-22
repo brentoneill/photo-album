@@ -1,6 +1,6 @@
 
 .photo-expanded {
-  background-color:rgba(0,0,0,.8);
+  background-color:rgba(0,0,0,.85);
 
   position:absolute;
   left:0;
@@ -10,8 +10,9 @@
   .photo-large {
     text-align:center;
     width:80%;
+    min-height:500px;
     margin:0 auto;
-    padding-top:200px;
+    padding-top:100px;
     margin-bottom:40px;
     img {
       border:thin solid $white;
@@ -25,7 +26,7 @@
   }
   .back-button {
     position:absolute;
-    top:20px;
+    top:40px;
     left:20px;
     a {
       border:thin solid $white;

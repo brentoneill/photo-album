@@ -7,10 +7,13 @@
     margin-left:100px;
     margin-right:100px;
     padding-bottom:10px;
-    border-bottom:thin solid $black;
+    border-bottom:2px solid $white;
     margin-bottom:100px;
+    color:$white;
     h2 {
       font-size:40px;
+      text-shadow:5px 5px 10px rgba(0,0,0,.6);
+
     }
   }
   .photo-row {
@@ -26,6 +29,7 @@
       transform:translateY(-20px);
     }
     div.photo {
+      background-color:$white;
       transition:all .5s ease;
       box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
     }
@@ -39,6 +43,10 @@
     padding:10px;
     border:thin solid $black;
     box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
+    .photo-image img {
+      width:200px;
+      height:200px;
+    }
   }
 }
 
