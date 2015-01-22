@@ -1,0 +1,12 @@
+//Hide Screen 1 and Screen 2 on page load
+.albums-container {
+}
+.album-expanded, nav {
+  display:none;
+}
+.photo-expanded {
+  display:none;
+}
+nav {
+  overflow-y:hidden;
+}

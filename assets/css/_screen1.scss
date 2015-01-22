@@ -1,0 +1,55 @@
+.header {
+  margin-bottom:40px;
+  width:100%;
+  text-align:center;
+  background-color:$black;
+  height:100px;
+  h1 {
+    padding-top:20px;
+    font-size:40px;
+    color:$white;
+  }
+}
+.albums-container {
+  width:80%;
+  margin:0 auto;
+  .album-row {
+    width:100%;
+    margin-bottom:40px;
+    &:last-child {
+      margin-bottom:0px;
+    }
+    a {
+      display:inline-block;
+      width:30%;
+      margin-right:5%;
+      &:hover > div.album {
+        transform:translateY(-20px);
+      }
+      div.album {
+        transition:all .5s ease;
+        box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
+      }
+    }
+    a:last-child {
+      margin-right:0;
+    }
+
+  }
+}
+
+.album {
+  width:100%;
+  margin:0 auto;
+  border:thin solid $black;
+  display:inline-block;
+  text-align:center;
+  img {
+    max-width:250px;
+    padding-top:20px;
+  }
+  h1 {
+    padding-bottom:10px;
+    padding-top:10px;
+  }
+}

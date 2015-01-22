@@ -1,0 +1,73 @@
+
+.photo-expanded {
+  background-color:rgba(0,0,0,.8);
+
+  position:absolute;
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  .photo-large {
+    text-align:center;
+    width:80%;
+    margin:0 auto;
+    padding-top:200px;
+    margin-bottom:40px;
+    img {
+      border:thin solid $white;
+      padding:10px;
+      transition:all .5 ease;
+    }
+    h2 {
+      color:$white;
+      margin-bottom:20px;
+    }
+  }
+  .back-button {
+    position:absolute;
+    top:20px;
+    left:20px;
+    a {
+      border:thin solid $white;
+      border-radius:5px;
+      padding:10px;
+      color:white;
+      transition:all .5s ease;
+      &:visited {
+        color:$white;
+      }
+      &:hover {
+        color: red;
+        border-color:red;
+      }
+    }
+  }
+  .photo-nav-buttons {
+    width:50%;
+    margin: 0 auto;
+    text-align:center;
+    a {
+      width:140px;
+      display:inline-block;
+      border:thin solid $white;
+      border-radius:5px;
+      padding:10px;
+      color:white;
+      transition:all .5s ease;
+      &:visited {
+        color:$white;
+      }
+      &:hover {
+        color: $green;
+        border-color: $green;
+      }
+    }
+    a:first-child {
+      margin-right:10px;
+      &:hover {
+        color: $red;
+        border-color: $red;
+      }
+    }
+  }
+}

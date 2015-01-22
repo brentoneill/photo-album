@@ -1,0 +1,83 @@
+.album-expanded {
+  margin-left:240px;
+  margin-right:100px;
+  .album-expanded-name {
+    text-align:center;
+    margin-top:60px;
+    margin-left:100px;
+    margin-right:100px;
+    padding-bottom:10px;
+    border-bottom:thin solid $black;
+    margin-bottom:100px;
+    h2 {
+      font-size:40px;
+    }
+  }
+  .photo-row {
+    width:100%;
+    margin-bottom:60px;
+    text-align:center;
+  }
+  a {
+    display:inline-block;
+    width:30%;
+    margin-right:5%;
+    &:hover > div.photo {
+      transform:translateY(-20px);
+    }
+    div.photo {
+      transition:all .5s ease;
+      box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
+    }
+  }
+  a:last-child {
+    margin-right:0;
+  }
+  .photo {
+    display:inline-block;
+    text-align:center;
+    padding:10px;
+    border:thin solid $black;
+    box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
+  }
+}
+
+
+nav {
+  position:absolute;
+  left:0;
+  top:0;
+  height:100%;
+  background-color:$black;
+  width:140px;
+  overflow:hidden;
+  ul {
+    margin-top:250px;
+    li {
+
+
+      transition:border-color .5s ease;
+      text-align:center;
+      &:hover {
+      }
+    }
+  }
+  a {
+    display:block;
+    margin:20px;
+    padding:8px;
+    border:thin solid $white;
+    border-radius:5px;
+    color:$white;
+    transition: all .5s ease;
+    &:visited {
+      color:$white;
+    }
+    &:hover {
+      color:red;
+      border-color:red
+
+    }
+
+  }
+}
