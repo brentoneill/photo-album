@@ -142,25 +142,22 @@ $(document).ready(function() {
     var curImageSrc = $('.photo-large img').attr('src');
     //Find the first img w/ same source as clicked and
     //traverse up the DOM to find the highest level
-    //parent of the image found
+    //parent of the image w/ the same img src
     var curImgParentDiv = $('img[src="'+curImageSrc+'"]').parent().parent().eq(0);
     var curImgParentA = curImgParentDiv.parent();
     //Traverse to the sibling of the next sibling of the parent anchor tag
     var newImgSrc = curImgParentA.next('a').find('img').attr('src');
     //get text for caption
     var caption = curImgParentA.next('a').find('p').text();
-
     if($(curImgParentA).is(':last-child'))
     {
-      alert('this is the last image in the album');
-      //maybe set to loop back to start...
+      curImgParentA = curImgParentA.parent().children().first();
+      newImgSrc = curImgParentA.find('img').attr('src');
+      caption = curImgParentA.find('p').text();
     }
-    else {
-      //change photo
-      $('.photo-large img').attr('src', newImgSrc);
-      //change photo caption
-      $('.photo-large h2').text(caption);
-    }
+    $('.photo-large img').attr('src', newImgSrc);
+    //change photo caption
+    $('.photo-large h2').text(caption);
   });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -186,15 +183,15 @@ $(document).ready(function() {
     var caption = curImgParentA.prev('a').find('p').text();
     if($(curImgParentA).is(':first-child'))
     {
-      alert('this is the first image in the album');
-      //maybe set to loop to the end of the album...
+
+      curImgParentA = curImgParentA.parent().children().last();
+      newImgSrc = curImgParentA.find('img').attr('src');
+      caption = curImgParentA.find('p').text();
     }
-    else {
-      //change photo caption
-      $('.photo-large h2').text(caption);
-      //chang photo
-      $('.photo-large img').attr('src', newImgSrc);
-    }
+    //change photo caption
+    $('.photo-large h2').text(caption);
+    //chang photo
+    $('.photo-large img').attr('src', newImgSrc);
   });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////

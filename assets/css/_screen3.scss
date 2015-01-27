@@ -1,7 +1,6 @@
 
 .photo-expanded {
   background-color:rgba(0,0,0,.85);
-
   position:absolute;
   left:0;
   top:0;
@@ -12,12 +11,14 @@
     width:80%;
     min-height:500px;
     margin:0 auto;
-    padding-top:100px;
-    margin-bottom:40px;
+    padding-top:50px;
+    margin-bottom:20px;
     img {
       border:thin solid $white;
       padding:10px;
-      transition:all .5 ease;
+      transition:all .5s ease;
+      max-height:450px;
+      text-align:middle;
     }
     h2 {
       color:$white;

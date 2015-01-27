@@ -25,6 +25,7 @@
     display:inline-block;
     width:30%;
     margin-right:5%;
+    margin-bottom:40px;
     &:hover > div.photo {
       transform:translateY(-20px);
     }
@@ -32,21 +33,19 @@
       background-color:$white;
       transition:all .5s ease;
       box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
+      display:inline-block;
+      text-align:center;
+      padding:10px;
+      border:thin solid $black;
+      box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
+      .photo-image img {
+        width:200px;
+        height:200px;
+      }
     }
   }
-  a:last-child {
+  a:nth-child(3), a:nth-child(6) {
     margin-right:0;
-  }
-  .photo {
-    display:inline-block;
-    text-align:center;
-    padding:10px;
-    border:thin solid $black;
-    box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, .4);
-    .photo-image img {
-      width:200px;
-      height:200px;
-    }
   }
 }
 
