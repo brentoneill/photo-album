@@ -7,14 +7,10 @@
 nav {
   overflow-y:hidden;
 }
-html {
-  overflow-y:hidden;
-}
-
 body {
-  position:fixed;
+  position:absolute;
   left:0;
-  top:0;
+  top:-50px;
   z-index:10;
   height:100%;
 }

@@ -1,14 +1,13 @@
 
 .photo-expanded {
   background-color:rgba(0,0,0,.85);
-  position:absolute;
+  position:fixed;
   left:0;
   top:0;
   height:100%;
   width:100%;
   .photo-large {
     text-align:center;
-    width:80%;
     min-height:500px;
     margin:0 auto;
     padding-top:50px;
@@ -47,6 +46,8 @@
   .photo-nav-buttons {
     width:50%;
     margin: 0 auto;
+    margin-bottom:40px;
+    margin-top:80px;
     text-align:center;
     a {
       width:140px;

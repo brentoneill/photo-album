@@ -42,13 +42,10 @@ p {
 nav {
   overflow-y: hidden; }
 
-html {
-  overflow-y: hidden; }
-
 body {
-  position: fixed;
+  position: absolute;
   left: 0;
-  top: 0;
+  top: -50px;
   z-index: 10;
   height: 100%; }
 
@@ -82,11 +79,14 @@ body:before {
 
 .header {
   margin-bottom: 40px;
+  margin-top: 50px;
   width: 100%;
   text-align: center;
   background-color: #000;
-  height: 100px; }
+  height: 100px;
+  transition: all .5s ease; }
   .header h1 {
+    transition: all .5s ease;
     padding-top: 20px;
     font-size: 40px;
     color: #FFFFFF; }
@@ -100,6 +100,7 @@ body:before {
     .albums-container .album-row:last-child {
       margin-bottom: 0px; }
     .albums-container .album-row a {
+      transition: all .5s ease;
       display: inline-block;
       width: 30%;
       margin-right: 5%; }
@@ -120,7 +121,8 @@ body:before {
   text-align: center; }
   .album img {
     max-width: 250px;
-    padding-top: 20px; }
+    padding-top: 20px;
+    transition: all .4s ease; }
   .album h1 {
     padding-bottom: 10px;
     padding-top: 10px; }
@@ -145,6 +147,7 @@ body:before {
     margin-bottom: 60px;
     text-align: center; }
   .album-expanded a {
+    transition: all .5s ease;
     display: inline-block;
     width: 30%;
     margin-right: 5%;
@@ -167,13 +170,16 @@ body:before {
     margin-right: 0; }
 
 nav {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
-  height: 100%;
+  height: 110%;
   background-color: #000;
   width: 140px;
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-box-shadow: 4px 0px 15px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 4px 0px 15px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 4px 0px 15px 0px rgba(50, 50, 50, 0.75); }
   nav ul {
     margin-top: 250px; }
     nav ul li {
@@ -195,14 +201,13 @@ nav {
 
 .photo-expanded {
   background-color: rgba(0, 0, 0, 0.85);
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%; }
   .photo-expanded .photo-large {
     text-align: center;
-    width: 80%;
     min-height: 500px;
     margin: 0 auto;
     padding-top: 50px;
@@ -234,6 +239,8 @@ nav {
   .photo-expanded .photo-nav-buttons {
     width: 50%;
     margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 80px;
     text-align: center; }
     .photo-expanded .photo-nav-buttons a {
       width: 140px;
@@ -256,6 +263,87 @@ nav {
         color: red;
         border-color: red; }
 
+@media screen and (max-width: 1000px) {
+  .album-expanded .album-expanded-name {
+    margin-bottom: 40px; }
+
+  .album-expanded a {
+    margin-right: 0;
+    width: auto; } }
+@media screen and (max-width: 980px) {
+  .albums-container {
+    width: 90%; }
+
+  .album h1 {
+    font-size: 24px; }
+
+  .album img {
+    max-width: 180px; }
+
+  .album-expanded .album-expanded-name {
+    margin-left: auto;
+    margin-right: auto; } }
+@media screen and (max-width: 860px) {
+  .photo-expanded .photo-nav-buttons {
+    width: 80%; } }
+@media screen and (max-width: 760px) {
+  .album img {
+    max-width: 140px; }
+
+  .photo-expanded .photo-large {
+    padding-top: 100px; } }
+@media screen and (max-width: 640px) {
+  .albums-container {
+    width: 95%; }
+
+  .album h1 {
+    font-size: 18px; }
+
+  .photo-expanded .photo-large img {
+    max-width: 400px; } }
+@media screen and (max-width: 576px) {
+  body {
+    position: relative; }
+
+  .albums-container {
+    width: 80%; }
+
+  .album-row {
+    margin: 0 auto; }
+
+  .albums-container .album-row a {
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 40px; }
+
+  .albums-container .album-row a:last-child {
+    margin-right: auto; }
+
+  .album img {
+    max-width: 300px; }
+
+  .photo-expanded .photo-nav-buttons {
+    width: 95%; }
+
+  .photo-expanded .photo-nav-buttons a {
+    padding: 5px;
+    width: 120px; }
+
+  .photo-expanded .photo-large img {
+    max-width: 300px; } }
+@media screen and (max-width: 400px) {
+  .albums-container {
+    width: 100%; }
+
+  .header h1 {
+    font-size: 32px; } }
+@media screen and (max-width: 320px) {
+  .albums-container .album-row a {
+    width: 90%; }
+
+  .album img {
+    max-width: 180px; } }
 .hidden {
   display: none; }
 
